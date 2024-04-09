@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "519494410885",
+    "project_id": "bodycam-d6f13",
+    "storage_bucket": "bodycam-d6f13.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:519494410885:android:084821373d400135023fec",
+        "android_client_info": {
+          "package_name": "com.junhajeonghoon.bodycam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "519494410885-bv72lfdsgp2gunf6e3rrsdgtn29hav7o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.junhajeonghoon.bodycam",
+            "certificate_hash": "676dd98e521b97e0e3b20e7ff12cdccc8c5369b2"
+          }
+        },
+        {
+          "client_id": "519494410885-eih8n1r5lpod8g123vhspqa98u82rbdi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOsgvicm1fmIFWCBoqb5fbVXOk97pbahA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "519494410885-eih8n1r5lpod8g123vhspqa98u82rbdi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
