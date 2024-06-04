@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../screens/workout_learning_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../views/workout_learning_screen.dart';
 
 
 class MyDrawer extends StatelessWidget {

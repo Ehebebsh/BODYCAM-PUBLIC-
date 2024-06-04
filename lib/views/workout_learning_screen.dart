@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:miniproject_exercise/views/workoutplay_screen.dart';
 import 'dart:convert';
-import 'package:miniproject_exercise/screens/workoutplay_screen.dart';
 import '../utils/admob_helper.dart';
 import '../utils/constant.dart';
 

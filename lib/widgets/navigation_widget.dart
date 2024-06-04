@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:miniproject_exercise/api/kakao_login.dart';
-import 'package:miniproject_exercise/screens/calendar_screen.dart';
-import 'package:miniproject_exercise/screens/gallery_screen.dart';
-import '../screens/camera_screen.dart';
-import '../screens/statics_screen.dart';
+import '../views/calendar_screen.dart';
+import '../views/camera_screen.dart';
+import '../views/gallery_screen.dart';
+import '../views/statics_screen.dart';
 import 'bnbcustome_painter_widget.dart';
 
 class MyHomePageBottomNavigationBar extends StatelessWidget {

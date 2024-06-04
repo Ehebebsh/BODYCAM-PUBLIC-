@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:miniproject_exercise/utils/colors.dart';
-import 'screens/calendar_screen.dart';
+import 'package:miniproject_exercise/views/calendar_screen.dart';
 import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
 import 'package:miniproject_exercise/utils/constant.dart' as cons;
 

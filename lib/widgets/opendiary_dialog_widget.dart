@@ -1,9 +1,10 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:miniproject_exercise/screens/calendar_screen.dart';
 import '../models/diarymodel.dart';
 import 'package:flutter/services.dart';
+
+import '../views/calendar_screen.dart';
 
 
 // ignore: must_be_immutable

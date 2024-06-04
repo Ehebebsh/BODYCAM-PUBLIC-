@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:miniproject_exercise/screens/video_screen.dart';
 import 'dart:convert';
+
+import 'package:miniproject_exercise/views/video_screen.dart';
 
 class WorkoutPlayerScreen extends StatefulWidget {
   final String query;
