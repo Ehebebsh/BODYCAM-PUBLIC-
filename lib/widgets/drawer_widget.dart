@@ -35,7 +35,7 @@ class MyDrawer extends StatelessWidget {
             launch('https://sites.google.com/view/bodycamprivacy/%ED%99%88');
           },),
           MyDrawerItem(title: '운동 배우기', onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context)=>WorkOutLearning())
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>WorkOutLearningView())
             );
           }),
           MyDrawerItem(title: '회원탈퇴', onTap: () {}),

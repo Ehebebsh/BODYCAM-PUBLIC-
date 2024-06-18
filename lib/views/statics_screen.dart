@@ -1,7 +1,7 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import '../providers/statistics_provider.dart';
-import '../widgets/workoutpiechart.dart';
-import '../models/indicator.dart';
+import '../utils/colors.dart';
+import '../view models/statistics_viewmodel.dart';
 
 class StaticsScreen extends StatefulWidget {
   @override
@@ -166,5 +166,84 @@ class _StaticsScreenState extends State<StaticsScreen> {
         ),
       ),
     );
+  }
+}
+
+class Indicator extends StatelessWidget {
+  const Indicator({
+    super.key,
+    required this.color,
+    required this.text,
+    required this.isSquare,
+    this.size = 16,
+    this.textColor,
+  });
+  final Color color;
+  final String text;
+  final bool isSquare;
+  final double size;
+  final Color? textColor;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: <Widget>[
+        Container(
+          width: size,
+          height: size,
+          decoration: BoxDecoration(
+            shape: isSquare ? BoxShape.rectangle : BoxShape.circle,
+            color: color,
+          ),
+        ),
+        const SizedBox(
+          width: 4,
+        ),
+        Text(
+          text,
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        )
+      ],
+    );
+  }
+}
+
+class WorkoutPieChart extends StatelessWidget {
+  final List<Map<String, dynamic>> diaries;
+
+  const WorkoutPieChart({Key? key, required this.diaries}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    if (diaries.isEmpty) {
+      return Center(
+        child: Text(
+          '작성된 일지가 없습니다.',
+          style: TextStyle(fontSize: 18, color: Colors.white),
+        ),
+      );
+    } else {
+      Map<String, int> workoutData = getWorkoutData(diaries);
+
+      List<PieChartSectionData> sections = workoutData.entries.map((entry) {
+        return PieChartSectionData(
+          value: entry.value.toDouble(),
+          color: workoutColors[entry.key],
+          title: entry.value.toString(),
+        );
+      }).toList();
+
+      return PieChart(
+        PieChartData(
+          sections: sections,
+          centerSpaceRadius: 70,
+          startDegreeOffset: 180,
+        ),
+      );
+    }
   }
 }

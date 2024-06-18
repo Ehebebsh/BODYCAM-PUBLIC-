@@ -1,5 +1,6 @@
-import 'package:miniproject_exercise/api/social_login.dart';
+
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
+import 'package:miniproject_exercise/models/kakao_login_model.dart';
 
 class KakaoLogin implements SocialLogin {
   @override

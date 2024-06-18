@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:miniproject_exercise/api/kakao_login.dart';
+import '../api/kakao_login.dart';
 import '../views/calendar_screen.dart';
 import '../views/camera_screen.dart';
 import '../views/gallery_screen.dart';

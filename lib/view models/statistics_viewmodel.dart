@@ -62,3 +62,14 @@ class DiaryLoader {
     return diaries;
   }
 }
+
+Map<String, int> getWorkoutData(List<Map<String, dynamic>> diaries) {
+  Map<String, int> workoutData = {};
+  for (var diary in diaries) {
+    String workoutType = diary['selectedOption'];
+    workoutData[workoutType] = workoutData.containsKey(workoutType)
+        ? workoutData[workoutType]! + 1
+        : 1;
+  }
+  return workoutData;
+}

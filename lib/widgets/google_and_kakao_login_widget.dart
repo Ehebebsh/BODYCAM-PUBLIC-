@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:miniproject_exercise/api/google_login.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../api/google_login.dart';
 import '../api/kakao_login.dart' as kakao;
 import '../views/member_information_write_screen.dart';
 

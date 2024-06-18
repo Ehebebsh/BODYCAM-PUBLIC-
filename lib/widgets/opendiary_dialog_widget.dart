@@ -1,13 +1,13 @@
+
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import '../models/diarymodel.dart';
 import 'package:flutter/services.dart';
+import 'package:intl/intl.dart';
 
+import '../view models/diary_modelview.dart';
 import '../views/calendar_screen.dart';
 
 
-// ignore: must_be_immutable
 class DiaryDialog extends StatefulWidget {
   DiaryDialog({
     Key? key,
@@ -27,20 +27,16 @@ class DiaryDialog extends StatefulWidget {
   String? videoPath;
 
   @override
-  // ignore: library_private_types_in_public_api
   _DiaryDialogState createState() => _DiaryDialogState();
 }
 
-
 class _DiaryDialogState extends State<DiaryDialog> {
   final TextEditingController _diaryTextController = TextEditingController();
-  final TextEditingController _weightController = TextEditingController(); // 추가된 부분
-  final DiaryModel _diaryModel = DiaryModel();
+  final TextEditingController _weightController = TextEditingController();
+  late final DiaryViewModel _diaryViewModel = DiaryViewModel();
 
   DateTime get selectedDate => _selectedDate ?? DateTime.now();
   DateTime? _selectedDate;
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +61,7 @@ class _DiaryDialogState extends State<DiaryDialog> {
                 const SizedBox(height: 16),
               ],
               TextFormField(
-                controller: _weightController, // 추가된 부분
+                controller: _weightController,
                 decoration: const InputDecoration(
                   labelText: '중량 (기본값: kg)',
                   hintText: '중량을 입력하세요.',
@@ -102,7 +98,7 @@ class _DiaryDialogState extends State<DiaryDialog> {
                 widget.selectedOption = null;
               });
               _diaryTextController.clear();
-              _weightController.clear(); // 추가된 부분
+              _weightController.clear();
               Navigator.pop(context);
             },
             child: const Text('취소'),
@@ -111,10 +107,7 @@ class _DiaryDialogState extends State<DiaryDialog> {
             onPressed: () async {
               _saveDiary();
               if (_validateForm()) {
-                // 키보드를 내립니다.
                 FocusScope.of(context).unfocus();
-
-                // CircularIndicator 표시
                 showDialog(
                   context: context,
                   barrierDismissible: false,
@@ -124,17 +117,12 @@ class _DiaryDialogState extends State<DiaryDialog> {
                     );
                   },
                 );
-
-                // 작성 완료 동작을 3초 딜레이 시킵니다.
                 await Future.delayed(Duration(seconds: 3));
-
-                // CircularIndicator 닫기
                 Navigator.pop(context);
-
-                // Diary 저장 및 페이지 이동
                 Navigator.pushAndRemoveUntil(
                   context,
-                  MaterialPageRoute(builder: (context) => const CalendarScreen()),
+                  MaterialPageRoute(
+                      builder: (context) => const CalendarScreen()),
                       (route) => false,
                 );
               }
@@ -145,7 +133,6 @@ class _DiaryDialogState extends State<DiaryDialog> {
       ),
     );
   }
-
 
   bool _validateForm() {
     if (_weightController.text.isEmpty) {
@@ -158,14 +145,15 @@ class _DiaryDialogState extends State<DiaryDialog> {
   }
 
   void _saveDiary() {
-    _diaryModel.saveVideoAndDiary(
+    _diaryViewModel.saveVideoAndDiary(
       widget.videoPath ?? '',
       selectedDate,
       widget.selectedOption ?? '',
       _diaryTextController.text,
-      weight: double.tryParse(_weightController.text) ?? 0.0, // 추가된 부분
+      weight: double.tryParse(_weightController.text) ?? 0.0,
     );
   }
 }
+
 
 
