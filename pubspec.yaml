@@ -55,7 +55,6 @@ dependencies:
   gsform: ^0.3.4
   shared_preferences: ^2.2.2
   provider: ^6.1.1
-  android_id: ^0.3.6
   url_launcher: ^6.2.4
   fl_chart: ^0.66.2
   youtube_player_flutter: ^9.0.0

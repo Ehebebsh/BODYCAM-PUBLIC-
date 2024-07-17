@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../views/userinfo_screen.dart';
 import '../views/workout_learning_screen.dart';
 
 
@@ -28,7 +29,10 @@ class MyDrawer extends StatelessWidget {
               ),
             ),
           ),
-          MyDrawerItem(title: '공지사항', onTap: () {}),
+          MyDrawerItem(title: '내 정보', onTap: () {
+            // Navigator.push(context, MaterialPageRoute(builder: (context)=>UserInfoScreen())
+            // );
+          }),
           MyDrawerItem(title: '오류문의', onTap: () {}),
           MyDrawerItem(title: '업무제휴 문의', onTap: () {}),
           MyDrawerItem(title: '개인정보취급방침', onTap: () {

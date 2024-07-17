@@ -32,6 +32,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => DiaryViewModel()),
         ChangeNotifierProvider(create: (context) => DiaryVideoViewModel()),
         ChangeNotifierProvider(create: (context) => WorkOutViewModel()), // WorkOutViewModel의 Provider를 추가합니다.
+
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

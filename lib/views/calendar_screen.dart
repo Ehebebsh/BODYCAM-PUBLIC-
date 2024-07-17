@@ -3,11 +3,9 @@ import 'package:provider/provider.dart';
 import 'package:flutter_calendar_carousel/classes/event.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:intl/intl.dart';
-import '../api/authenticationmanager.dart';
 import '../utils/constant.dart' as cons;
 import '../widgets/navigation_widget.dart';
 import '../widgets/buildCalendarViewWidget.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import '../view models/diary_modelview.dart';
 import '../widgets/drawer_widget.dart';
 import 'dart:io';
@@ -35,8 +33,7 @@ class _CalendarScreenState extends State<CalendarScreen> with SingleTickerProvid
   String? _selectedOption;
   List<Tab>? myTabs;
   TabController? tabController;
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  late UserAuthManager _authManager;
+
 
   @override
   void initState() {
@@ -47,8 +44,6 @@ class _CalendarScreenState extends State<CalendarScreen> with SingleTickerProvid
       nativeFactoryId: 'adFactoryExample',
       rewardAdUnitId: cons.videoadUnitId,
     ).createNativeAd();
-    _authManager = UserAuthManager();
-    _authManager.init();
     tabController = TabController(vsync: this, length: cons.workouts.length);
     myTabs = cons.workouts.map((String workout) {
       return Tab(text: workout);
