@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-import '../views/userinfo_screen.dart';
 import '../views/workout_learning_screen.dart';
 
 
