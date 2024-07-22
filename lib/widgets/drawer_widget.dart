@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../views/userinfo_screen.dart';
 import '../views/workout_learning_screen.dart';
 
 
@@ -28,11 +30,10 @@ class MyDrawer extends StatelessWidget {
             ),
           ),
           MyDrawerItem(title: '내 정보', onTap: () {
-            // Navigator.push(context, MaterialPageRoute(builder: (context)=>UserInfoScreen())
-            // );
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>UserProfilePage())
+            );
           }),
-          MyDrawerItem(title: '오류문의', onTap: () {}),
-          MyDrawerItem(title: '업무제휴 문의', onTap: () {}),
+          MyDrawerItem(title: '앱 문의', onTap: _sendEmail),
           MyDrawerItem(title: '개인정보취급방침', onTap: () {
             launch('https://sites.google.com/view/bodycamprivacy/%ED%99%88');
           },),
@@ -40,10 +41,23 @@ class MyDrawer extends StatelessWidget {
             Navigator.push(context, MaterialPageRoute(builder: (context)=>WorkOutLearningView())
             );
           }),
-          MyDrawerItem(title: '회원탈퇴', onTap: () {}),
+          MyDrawerItem(title: '앱 버전 : 1.0.0', onTap: () {}),
         ],
       ),
     );
+  }
+  void _sendEmail() async {
+    final Email email = Email(
+      body: '',
+      subject: '[BODYCAM 문의하기]',
+      recipients: ['gwi060722@gmail.com'],
+      cc: [],
+      bcc: [],
+      attachmentPaths: [],
+      isHTML: false,
+    );
+
+    await FlutterEmailSender.send(email);
   }
 }
 
@@ -71,3 +85,4 @@ class MyDrawerItem extends StatelessWidget {
     );
   }
 }
+

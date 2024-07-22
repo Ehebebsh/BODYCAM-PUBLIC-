@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import '../api/kakao_login.dart';
 import '../views/calendar_screen.dart';
 import '../views/camera_screen.dart';
 import '../views/gallery_screen.dart';
 import '../views/statics_screen.dart';
+import '../views/userinfo_screen.dart';
 import 'bnbcustome_painter_widget.dart';
 
 class MyHomePageBottomNavigationBar extends StatelessWidget {
@@ -15,48 +14,6 @@ class MyHomePageBottomNavigationBar extends StatelessWidget {
     required this.size,
   }) : super(key: key);
 
-  Future<void> _logout(BuildContext context) async {
-    bool logoutConfirmed = await _showLogoutConfirmationDialog(context);
-
-    if (logoutConfirmed) {
-      await GoogleSignIn().signOut();
-      await KakaoLogin().logout();
-      // Firebase에서도 로그아웃 처리
-
-      // 필요한 추가 로그아웃 로직을 여기에 추가할 수 있습니다.
-    }
-  }
-
-  Future<bool> _showLogoutConfirmationDialog(BuildContext context) async {
-    bool? result = await showDialog<bool>(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          content: const Text('정말 로그아웃 하시겠습니까?',
-          style:TextStyle(
-            fontSize: 20
-          )
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop(true); // 네 선택 시 다이얼로그 닫기
-              },
-              child: const Text('네'),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop(false); // 아니요 선택 시 다이얼로그 닫기
-              },
-              child: const Text('아니요'),
-            ),
-          ],
-        );
-      },
-    );
-
-    return result ?? false; // 다이얼로그가 닫힐 때까지 기다렸을 때 선택이 없으면 false 반환
-  }
 
 
   @override
@@ -93,10 +50,10 @@ class MyHomePageBottomNavigationBar extends StatelessWidget {
               children: [
                 IconButton(
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>StaticsScreen())
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>UserProfilePage())
                     );
                   },
-                  icon: const Icon(Icons.bar_chart, color: Colors.white),
+                  icon: const Icon(Icons.person, color: Colors.white),
                 ),
                 IconButton(
                   onPressed: () {
@@ -119,9 +76,12 @@ class MyHomePageBottomNavigationBar extends StatelessWidget {
                 ),
                 IconButton(
                   onPressed: () async {
-                    await _logout(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => StaticsScreen()),
+                    );
                   },
-                  icon: const Icon(Icons.logout, color: Colors.white),
+                  icon: const Icon(Icons.bar_chart, color: Colors.white),
                 ),
               ],
             ),

@@ -61,6 +61,7 @@ dependencies:
   share_plus: ^7.2.2
   google_mobile_ads: ^4.0.0
   flutter_native_splash: ^2.3.10
+  flutter_email_sender: ^6.0.3
 
 dev_dependencies:
   flutter_test:

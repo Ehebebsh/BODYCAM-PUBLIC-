@@ -52,4 +52,20 @@ class MultiSectionFormViewModel {
       throw Exception('Error saving data to Firestore: $e');
     }
   }
+
+  Future<UserModel?> getUserData() async {
+    if (user == null) {
+      throw Exception('User is not authenticated.');
+    }
+
+    try {
+      DocumentSnapshot doc = await FirebaseFirestore.instance.collection('users').doc(user!.uid).get();
+      if (doc.exists) {
+        return UserModel.fromMap(doc.data() as Map<String, dynamic>);
+      }
+    } catch (e) {
+      throw Exception('Error fetching data from Firestore: $e');
+    }
+    return null;
+  }
 }
