@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../views/userinfo_screen.dart';
 import '../views/workout_learning_screen.dart';
 
 
@@ -29,10 +28,6 @@ class MyDrawer extends StatelessWidget {
               ),
             ),
           ),
-          MyDrawerItem(title: '내 정보', onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context)=>UserProfilePage())
-            );
-          }),
           MyDrawerItem(title: '앱 문의', onTap: _sendEmail),
           MyDrawerItem(title: '개인정보취급방침', onTap: () {
             launch('https://sites.google.com/view/bodycamprivacy/%ED%99%88');
