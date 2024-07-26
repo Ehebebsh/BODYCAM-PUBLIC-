@@ -2,12 +2,10 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../api/firestoreupdate.dart';
 import '../api/loginchecker.dart';
 import '../models/usermodel.dart';
 
 class MultiSectionFormViewModel {
-  final FirestoreService _firestoreService = FirestoreService();
   User? user;
   late StreamSubscription<User?> _authSubscription;
 

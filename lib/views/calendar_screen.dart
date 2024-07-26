@@ -2,15 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_calendar_carousel/classes/event.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:intl/intl.dart';
 import '../utils/constant.dart' as cons;
 import '../widgets/navigation_widget.dart';
 import '../widgets/buildCalendarViewWidget.dart';
 import '../view models/diary_modelview.dart';
 import '../widgets/drawer_widget.dart';
-import 'dart:io';
-import 'package:flutter/services.dart';
 import '../utils/admob_helper.dart';
+import 'diary_detail_screen.dart';
 
 class CalendarScreen extends StatefulWidget {
   final Function(DateTime)? onDateSelected;
@@ -169,8 +167,20 @@ class _CalendarScreenState extends State<CalendarScreen> with SingleTickerProvid
                   workout,
                   style: const TextStyle(color: Colors.white),
                 ),
-                onTap: () {
-                  _readWorkoutDiary(viewModel.selectedDate, workout, context);
+                onTap: () async {
+                  final bool? isDeleted = await Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => DiaryDetailScreen(
+                        selectedDate: viewModel.selectedDate,
+                        workout: workout,
+                      ),
+                    ),
+                  );
+
+                  if (isDeleted == true) {
+                    viewModel.updateSelectedDateWorkouts();
+                    viewModel.updateMarkedDateMap();
+                  }
                 },
               ),
           ],
@@ -179,165 +189,5 @@ class _CalendarScreenState extends State<CalendarScreen> with SingleTickerProvid
     } else {
       return Container();
     }
-  }
-
-  Future<void> _readWorkoutDiary(DateTime selectedDate, String workout, BuildContext context) async {
-    final viewModel = Provider.of<DiaryViewModel>(context, listen: false);
-    try {
-      Map<String, dynamic>? diaryData = await viewModel.readWorkoutDiary(selectedDate, workout);
-      if (diaryData != null) {
-        String formattedDate = DateFormat('yyyy/MM/dd').format(selectedDate);
-
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: const Text('운동일지 내용', style: TextStyle(fontWeight: FontWeight.bold)),
-              content: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('날짜: $formattedDate'),
-                    Text('운동 종류: ${diaryData['selectedOption']}'),
-                    Text('중량: ${diaryData['weight']}'),
-                    Text('일지 내용: ${diaryData['diaryText']}'),
-                  ],
-                ),
-              ),
-              actions: <Widget>[
-                Row(
-                  children: [
-                    TextButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      child: const Text('닫기'),
-                    ),
-                    TextButton(
-                      onPressed: () async {
-                        adManager.loadRewardAd();
-                        adManager.showRewardAd();
-                        Navigator.of(context).pop();
-                        await _editWorkoutDiary(selectedDate, workout, context, diaryData);
-                        setState(() {});
-                      },
-                      child: const Text('수정'),
-                    ),
-                    TextButton(
-                      onPressed: () async {
-                        String filePath = await viewModel.getFilePathForDate(selectedDate, workout);
-                        File(filePath).deleteSync();
-                        setState(() {
-                          viewModel.selectedDateWorkouts.remove(workout);
-                        });
-                        viewModel.updateMarkedDateMap();
-                        Navigator.of(context).pop();
-                      },
-                      child: const Text('삭제'),
-                    ),
-                  ],
-                ),
-              ],
-            );
-          },
-        );
-      }
-    } catch (e) {
-      // 오류 처리
-    }
-  }
-
-  Future<void> _editWorkoutDiary(DateTime selectedDate, String workout, BuildContext context, Map<String, dynamic> diaryData) async {
-    final viewModel = Provider.of<DiaryViewModel>(context, listen: false);
-    TextEditingController textEditingController = TextEditingController()..text = diaryData['diaryText'];
-
-    String selectedOption = diaryData['selectedOption'];
-    double weight = diaryData['weight'] as double;
-
-    List<String> workoutOptions = List.from(cons.workouts);
-    workoutOptions.remove('전체보기');
-
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return StatefulBuilder(
-          builder: (context, setState) {
-            return WillPopScope(
-              onWillPop: () async => false,
-              child: AlertDialog(
-                title: const Text('운동일지 내용 수정', style: TextStyle(fontWeight: FontWeight.bold)),
-                content: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('날짜: ${DateFormat('yyyy-MM-dd').format(selectedDate)}'),
-                      DropdownButton<String>(
-                        value: selectedOption,
-                        onChanged: (String? newValue) {
-                          setState(() {
-                            selectedOption = newValue!;
-                          });
-                        },
-                        items: workoutOptions.map((String workout) {
-                          return DropdownMenuItem<String>(
-                            value: workout,
-                            child: Text(workout),
-                          );
-                        }).toList(),
-                      ),
-                      const Text('중량:'),
-                      TextField(
-                        controller: TextEditingController()..text = weight.toString(),
-                        keyboardType: TextInputType.number,
-                        onChanged: (value) {
-                          if (value.isNotEmpty) {
-                            try {
-                              weight = double.parse(value);
-                            } catch (e) {
-                              weight = 0.0;
-                            }
-                          } else {
-                            weight = 0.0;
-                          }
-                        },
-                      ),
-                      const Text('일지 내용:'),
-                      TextField(
-                        controller: textEditingController,
-                        maxLines: null,
-                      ),
-                    ],
-                  ),
-                ),
-                actions: <Widget>[
-                  TextButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: const Text('닫기'),
-                  ),
-                  TextButton(
-                    onPressed: () async {
-                      diaryData['selectedOption'] = selectedOption;
-                      diaryData['weight'] = weight;
-                      diaryData['diaryText'] = textEditingController.text;
-
-                      await viewModel.editWorkoutDiary(selectedDate, workout, diaryData);
-
-                      setState(() {
-                        viewModel.updateSelectedDateWorkouts();
-                      });
-
-                      Navigator.of(context).pop();
-                    },
-                    child: const Text('수정하기'),
-                  ),
-                ],
-              ),
-            );
-          },
-        );
-      },
-    );
   }
 }
