@@ -36,7 +36,7 @@ class MyDrawer extends StatelessWidget {
             Navigator.push(context, MaterialPageRoute(builder: (context)=>WorkOutLearningView())
             );
           }),
-          MyDrawerItem(title: '앱 버전 : 1.0.0', onTap: () {}),
+          MyDrawerItem(title: '앱 버전 : 1.0.1', onTap: () {}),
         ],
       ),
     );
