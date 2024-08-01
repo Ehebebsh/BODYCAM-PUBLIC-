@@ -37,7 +37,6 @@ class DiaryVideoViewModel extends ChangeNotifier {
       notifyListeners();
     } catch (e) {
       // Handle error
-      print('Error loading video list: $e');
     }
   }
 
@@ -48,7 +47,6 @@ class DiaryVideoViewModel extends ChangeNotifier {
       notifyListeners(); // Notify listeners after deleting video
     } catch (e) {
       // Handle error
-      print('Error deleting video: $e');
     }
   }
 
@@ -75,7 +73,6 @@ class DiaryVideoViewModel extends ChangeNotifier {
       return newFile.path;
     } catch (e) {
       // Handle error
-      print('Error renaming video: $e');
       return null;
     }
   }

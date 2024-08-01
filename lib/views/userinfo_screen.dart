@@ -96,7 +96,6 @@ class _UserProfilePageState extends State<UserProfilePage> {
       await GoogleSignIn().signOut();
       await KakaoLogin().logout();
     } catch (e) {
-      print('로그아웃 중 오류 발생: $e');
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Error logging out: $e')),
       );

@@ -38,7 +38,6 @@ class DiaryViewModel extends ChangeNotifier {
 
       await _saveDiary(diaryEntry, diaryFolder);
     } catch (e) {
-      print('Error in saveVideoAndDiary: $e');
     }
   }
 
@@ -51,7 +50,7 @@ class DiaryViewModel extends ChangeNotifier {
       File file = File(filePath);
       await file.writeAsString(content);
     } catch (e) {
-      print('Error in _saveDiary: $e');
+
     }
   }
 
@@ -88,7 +87,6 @@ class DiaryViewModel extends ChangeNotifier {
       await videoFile.copy(newPath);
       await videoFile.delete();
     } catch (e) {
-      print('Error copying or deleting video file: $e');
     }
   }
 
@@ -170,7 +168,6 @@ class DiaryViewModel extends ChangeNotifier {
         return json.decode(fileContent) as Map<String, dynamic>;
       }
     } catch (e) {
-      print('Error in readWorkoutDiary: $e');
     }
     return null;
   }
@@ -190,7 +187,6 @@ class DiaryViewModel extends ChangeNotifier {
       await updateMarkedDateMap();
       await updateSelectedDateWorkouts();
     } catch (e) {
-      print('Error in editWorkoutDiary: $e');
     }
   }
 }

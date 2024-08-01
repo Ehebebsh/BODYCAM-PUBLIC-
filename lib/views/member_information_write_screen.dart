@@ -5,6 +5,7 @@ import 'package:gsform/gs_form/widget/section.dart';
 import '../view models/user_viewmodel.dart';
 import '../widgets/gsdatepicker.dart';
 import '../widgets/gsradio.dart';
+import 'calendar_screen.dart';
 
 class MultiSectionForm extends StatefulWidget {
   @override
@@ -43,7 +44,11 @@ class _MultiSectionFormState extends State<MultiSectionForm> {
       setState(() {
         canPop = true;
       });
-      Navigator.pop(context);
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => CalendarScreen()),
+              (route) => false
+      );
     } catch (e) {
       debugPrint(e.toString());
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error saving data: $e')));
