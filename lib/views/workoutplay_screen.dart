@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-
 import 'package:miniproject_exercise/views/video_screen.dart';
+
+import '../utils/constant.dart' as cons;
 
 class WorkoutPlayerScreen extends StatefulWidget {
   final String query;
@@ -26,7 +27,7 @@ class _WorkoutPlayerScreenState extends State<WorkoutPlayerScreen> {
   Future<void> _loadVideos() async {
     // Fetch videos related to workout using YouTube Data API
     // Replace 'YOUR_API_KEY' with your actual YouTube API key
-    String apiKey = 'AIzaSyBAJ7G21z-D3glWtZ-Fb4AC3VFc5XL62Bw';
+    String apiKey = cons.youtubeapikey;
     String url =
         'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=${Uri
         .encodeComponent(widget.query)}&key=$apiKey';
