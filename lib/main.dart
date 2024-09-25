@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:miniproject_exercise/utils/colors.dart';
 import 'package:miniproject_exercise/view%20models/diary_modelview.dart';
@@ -14,6 +15,7 @@ import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: 'assets/config/.env');
   await Firebase.initializeApp();
   KakaoSdk.init(nativeAppKey: cons.KAKAO_NATIVE_APP_KEY);
   MobileAds.instance.initialize();
