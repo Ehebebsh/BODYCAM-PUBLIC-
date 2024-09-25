@@ -4,6 +4,10 @@
 
 ---
 
+## 📥 **다운로드 링크**
+
+- [Google Play Store에서 다운로드](https://play.google.com/store/apps/details?id=com.junhajeonghoon.bodycam&pli=1)
+
 ## 📅 **제작 기간 & 참여 인원**
 - **기간**: 2024년 6월 1일 ~ 7월 15일
 - **참여 인원**: 개인 프로젝트
@@ -54,7 +58,7 @@
 <div markdown="1">
 
  
-dart
+```dart
   static Future<void> signInWithGoogleAndNavigate(BuildContext context) async {
     try {
       await GoogleLogin.signInWithGoogle(context);
@@ -98,7 +102,7 @@ dart
     }
   }
 }
-
+```
 
 </div>
 </details>
@@ -110,7 +114,7 @@ dart
 <div markdown="1">
 
  
-dart
+```dart
 Future<UserModel?> getUserData() async {
     if (user == null) {
       throw Exception('User is not authenticated.');
@@ -127,7 +131,7 @@ Future<UserModel?> getUserData() async {
     return null;
   }
 }
-
+```
 
 </div>
 </details>
@@ -150,7 +154,7 @@ Future<UserModel?> getUserData() async {
    - 유사한 운동명(예: 벤치프레스, 인클라인 벤치프레스)으로 인해 발생한 중복 필터링 문제를 해결하여, 같은 운동으로 처리되지 않도록 개선
 
   
-dart
+```dart
   Future<void> _loadVideoList(String exercise) async {
     Directory appDocDir = await getApplicationDocumentsDirectory();
     String appDocPath = appDocDir.path;
@@ -175,7 +179,7 @@ dart
       // Handle error
     }
   }
-
+```
 
 ## **앱 실행 화면**
 <img src=""  width="200">
