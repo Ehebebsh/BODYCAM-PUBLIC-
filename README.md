@@ -9,7 +9,7 @@
 - [Google Play Store에서 다운로드](https://play.google.com/store/apps/details?id=com.junhajeonghoon.bodycam&pli=1)
 
 ## 📅 **제작 기간 & 참여 인원**
-- **기간**: 2024년 6월 1일 ~ 7월 15일
+- **기간**: 2024년 1월 10일 ~ 3월 14일
 - **참여 인원**: 개인 프로젝트
 
 ## 📜 **기획 문서**
@@ -325,14 +325,11 @@ Future<UserModel?> getUserData() async {
 
 
 ## **앱 실행 화면**
-<img src=""  width="200">
-<img src=""  width="200">
-<img src=""  width="200">
-<img src=""  width="200">
-<img src=""  width="200">
-<img src=""  width="200">
+<img src="https://github.com/user-attachments/assets/8a8c0371-7e5f-459f-823e-dff400485a72"  width="200">
+<img src="https://github.com/user-attachments/assets/aa9c3c45-4cf8-4eac-acf5-dcf58b576322"  width="200">
+<img src="https://github.com/user-attachments/assets/cdcc6f93-5342-47e3-b6a6-a360212d1d18"  width="200">
+<img src="https://github.com/user-attachments/assets/4efcb169-a226-42d8-b301-2af79750f720"  width="200">
+<img src="https://github.com/user-attachments/assets/feebf3ed-7c76-4e65-89ef-4a580819260d"  width="200">
+<img src="https://github.com/user-attachments/assets/43639874-122d-4a48-b306-320eb718c5f5"  width="200">
+<img src="https://github.com/user-attachments/assets/47ce42ad-a809-4075-9d1a-836538c2b42d"  width="200">
 
-
-## 📥 **다운로드 링크**
-
-- [Google Play Store에서 다운로드](https://play.google.com/store/apps/details?id=com.junhajeonghoon.bodycam&pli=1)
