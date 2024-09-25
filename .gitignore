@@ -32,6 +32,7 @@ migrate_working_dir/
 /build/
 /lib/constant.dart/
 upload-keystore.jks/
+/assets/config/.env
 
 # Symbolication related
 app.*.symbols
@@ -43,4 +44,3 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
-/assets/config/.env
