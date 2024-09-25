@@ -13,7 +13,7 @@
 - **참여 인원**: 개인 프로젝트
 
 ## 📜 **기획 문서**
-- [기획서 보기](https://docs.google.com/presentation/d/your-plan-link)
+- [기획서 보기](https://docs.google.com/presentation/d/1DVgyMomPgWympdMpRhiSHV0duIjlyKPEhIpxy5Tyw1w/edit#slide=id.g30555caeb2d_0_0)
 
 ## 🛠 **사용 기술**
 
