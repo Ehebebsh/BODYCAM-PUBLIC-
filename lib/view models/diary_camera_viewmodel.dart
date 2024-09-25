@@ -83,7 +83,7 @@ class CameraViewModel extends ChangeNotifier {
   Future<bool> checkLoginAndDiary() async {
     bool isLoggedIn = await LoginChecker().checkLoginStatus();
     int diaryCount = await getDiaryCount();
-    if (!isLoggedIn && diaryCount >= 1) {
+    if (!isLoggedIn && diaryCount >= 10) {
       return false;
     }
     return true;
