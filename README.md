@@ -1,4 +1,4 @@
-# <img src="https://github.com/user-attachments/assets/bodycam-logo" width="30 " height="30"> Bodycam
+# <img src="https://github.com/user-attachments/assets/5a54321b-13e7-47b2-b879-6d499d5b3e9c" width="30 " height="30"> Bodycam
 
 > **운동 영상을 기록하고 학습할 수 있는 앱**
 
