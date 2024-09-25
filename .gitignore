@@ -30,6 +30,8 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 /build/
+/lib/constant.dart/
+upload-keystore.jks/
 
 # Symbolication related
 app.*.symbols
