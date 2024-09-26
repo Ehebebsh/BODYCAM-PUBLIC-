@@ -325,11 +325,11 @@ Future<UserModel?> getUserData() async {
 
 
 ## **앱 실행 화면**
-<img src="https://github.com/user-attachments/assets/8a8c0371-7e5f-459f-823e-dff400485a72"  width="200">
-<img src="https://github.com/user-attachments/assets/aa9c3c45-4cf8-4eac-acf5-dcf58b576322"  width="200">
-<img src="https://github.com/user-attachments/assets/cdcc6f93-5342-47e3-b6a6-a360212d1d18"  width="200">
-<img src="https://github.com/user-attachments/assets/4efcb169-a226-42d8-b301-2af79750f720"  width="200">
-<img src="https://github.com/user-attachments/assets/feebf3ed-7c76-4e65-89ef-4a580819260d"  width="200">
-<img src="https://github.com/user-attachments/assets/43639874-122d-4a48-b306-320eb718c5f5"  width="200">
+<img src="https://github.com/user-attachments/assets/b3752145-3fa3-46cb-a640-911b7fbc834f"  width="200">
+<img src="https://github.com/user-attachments/assets/089d385f-a136-4150-8141-e7f7689e8d56"  width="200">
+<img src="https://github.com/user-attachments/assets/f9c25bbb-7a8b-4d25-b939-20563c22f0f4"  width="200">
+<img src="https://github.com/user-attachments/assets/bdb83718-83ab-4f5e-b7f8-b1eda32f11cd"  width="200">
+<img src="https://github.com/user-attachments/assets/1fb9dcb5-1fd6-44fd-918f-a1c6f05e334e"  width="200">
+<img src="https://github.com/user-attachments/assets/9e6a7669-c04b-4dc8-950d-db9f39cf8ccb"  width="200">
 <img src="https://github.com/user-attachments/assets/47ce42ad-a809-4075-9d1a-836538c2b42d"  width="200">
 
